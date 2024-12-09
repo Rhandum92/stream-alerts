@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bunny Alert</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #2B0306;
+        }
+
+        .alert {
+            font-family: 'Arial', sans-serif;
+            font-size: 30px;
+            color: #F1A3AD;
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            animation: fadeInOut 4s ease-out;
+        }
+
+        .alert img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            animation: bunnyHop 1s infinite;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; }
+            25% { opacity: 1; }
+            75% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes bunnyHop {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="alert">
+        <img src="bunny-icon.png" alt="Bunny Icon" />
+        <span>New Follower!</span>
+    </div>
+
+    <script>
+        // Function to trigger the alert
+        function triggerAlert(message) {
+            const alertBox = document.querySelector('.alert');
+            alertBox.style.opacity = '1';
+            alertBox.querySelector('span').textContent = message;
+            setTimeout(() => {
+                alertBox.style.opacity = '0';
+            }, 4000); // Alert duration matches the animation duration
+        }
+
+        // Example: Trigger alert when page loads (can be replaced with stream event trigger)
+        window.onload = function() {
+            triggerAlert('New Follower!');
+        }
+    </script>
+
+</body>
+</html>
